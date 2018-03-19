@@ -4,7 +4,9 @@
   "description": "tenthousandthings.org.uk",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify -t [ babelify --presets [ react ] ] src/index.js -o build/index.js",
+    "start": "npm run build && chromium-browser src/index.html",
+    "export": "browserify -t [ babelify --presets [ react ] ] src/index.js | indexhtmlify --style src/styles/app.global.css --title 'Ten Thousand Things' > index.html"
   },
   "author": "Kieran Gibb",
   "license": "ISC",
